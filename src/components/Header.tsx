@@ -207,7 +207,7 @@ const NavBar = () => {
                     Institution Blog
                   </Link>
                   <Link
-                    to="home/university-search"
+                    to="/home/university-search"
                     className="block px-4 py-2 text-sm hover:bg-gray-100"
                   >
                     University Search
