@@ -13,11 +13,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary:
-        "bg-gradient-to-r from-primary to-[var(--color-orange-light)] hover:from-[var(--color-orange-dark)] hover:to-[var(--color-orange-medium)] text-white focus:ring-primary shadow-lg hover:shadow-xl",
+        "bg-gradient-to-r from-primary to-primary/50 hover:from-[var(--color-orange-dark)] hover:to-[var(--color-orange-medium)] text-white focus:ring-primary shadow-lg hover:shadow-xl",
       secondary:
         "bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white focus:ring-gray-600 shadow-md hover:shadow-lg",
       outline:
-        "border-2 border-primary text-primary hover:bg-gradient-to-r hover:from-primary hover:to-[var(--color-orange-light)] hover:text-white focus:ring-primary bg-transparent",
+        "border-2 border-primary text-primary hover:bg-gradient-to-r hover:from-primary hover:to-primary/50 hover:text-white focus:ring-primary bg-transparent",
       ghost: "text-gray-700 hover:bg-gray-100 focus:ring-gray-300",
       accent:
         "bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white focus:ring-gray-900 shadow-lg hover:shadow-xl",
