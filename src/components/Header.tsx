@@ -248,7 +248,7 @@ const NavBar = () => {
           {/* Consultant Button */}
           <div className="hidden lg:flex">
             <Link
-              to="/consultant"
+              to="/home/consultant"
               className="bg-pink-600 text-white px-4 py-3 rounded-md text-sm font-medium hover:bg-pink-700 transition"
             >
               Talk to a Consultant
@@ -477,7 +477,7 @@ const NavBar = () => {
               {/* Talk to Consultant Button */}
               <div className="mt-6 pt-4 border-t border-gray-200">
                 <Link
-                  to="/consultant"
+                  to="/home/consultant"
                   className="block w-full bg-pink-600 text-white px-4 py-3 rounded-md text-sm font-medium hover:bg-pink-700 transition text-center"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

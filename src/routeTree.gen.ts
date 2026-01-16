@@ -20,6 +20,7 @@ import { Route as HomePartnersIndexRouteImport } from './routes/home/partners/in
 import { Route as HomeInstitutionIndexRouteImport } from './routes/home/institution/index'
 import { Route as HomeFaqsIndexRouteImport } from './routes/home/faqs/index'
 import { Route as HomeEventsIndexRouteImport } from './routes/home/events/index'
+import { Route as HomeConsultantIndexRouteImport } from './routes/home/consultant/index'
 import { Route as HomeBookAppointmentIndexRouteImport } from './routes/home/book-appointment/index'
 import { Route as HomeAboutIndexRouteImport } from './routes/home/about/index'
 import { Route as AuthAdminIndexRouteImport } from './routes/auth/admin/index'
@@ -80,6 +81,11 @@ const HomeEventsIndexRoute = HomeEventsIndexRouteImport.update({
   path: '/events/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
+const HomeConsultantIndexRoute = HomeConsultantIndexRouteImport.update({
+  id: '/consultant/',
+  path: '/consultant/',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
 const HomeBookAppointmentIndexRoute =
   HomeBookAppointmentIndexRouteImport.update({
     id: '/book-appointment/',
@@ -104,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/auth/admin': typeof AuthAdminIndexRoute
   '/home/about': typeof HomeAboutIndexRoute
   '/home/book-appointment': typeof HomeBookAppointmentIndexRoute
+  '/home/consultant': typeof HomeConsultantIndexRoute
   '/home/events': typeof HomeEventsIndexRoute
   '/home/faqs': typeof HomeFaqsIndexRoute
   '/home/institution': typeof HomeInstitutionIndexRoute
@@ -119,6 +126,7 @@ export interface FileRoutesByTo {
   '/auth/admin': typeof AuthAdminIndexRoute
   '/home/about': typeof HomeAboutIndexRoute
   '/home/book-appointment': typeof HomeBookAppointmentIndexRoute
+  '/home/consultant': typeof HomeConsultantIndexRoute
   '/home/events': typeof HomeEventsIndexRoute
   '/home/faqs': typeof HomeFaqsIndexRoute
   '/home/institution': typeof HomeInstitutionIndexRoute
@@ -136,6 +144,7 @@ export interface FileRoutesById {
   '/auth/admin/': typeof AuthAdminIndexRoute
   '/home/about/': typeof HomeAboutIndexRoute
   '/home/book-appointment/': typeof HomeBookAppointmentIndexRoute
+  '/home/consultant/': typeof HomeConsultantIndexRoute
   '/home/events/': typeof HomeEventsIndexRoute
   '/home/faqs/': typeof HomeFaqsIndexRoute
   '/home/institution/': typeof HomeInstitutionIndexRoute
@@ -154,6 +163,7 @@ export interface FileRouteTypes {
     | '/auth/admin'
     | '/home/about'
     | '/home/book-appointment'
+    | '/home/consultant'
     | '/home/events'
     | '/home/faqs'
     | '/home/institution'
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
     | '/auth/admin'
     | '/home/about'
     | '/home/book-appointment'
+    | '/home/consultant'
     | '/home/events'
     | '/home/faqs'
     | '/home/institution'
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '/auth/admin/'
     | '/home/about/'
     | '/home/book-appointment/'
+    | '/home/consultant/'
     | '/home/events/'
     | '/home/faqs/'
     | '/home/institution/'
@@ -280,6 +292,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeEventsIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/home/consultant/': {
+      id: '/home/consultant/'
+      path: '/consultant'
+      fullPath: '/home/consultant'
+      preLoaderRoute: typeof HomeConsultantIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
     '/home/book-appointment/': {
       id: '/home/book-appointment/'
       path: '/book-appointment'
@@ -308,6 +327,7 @@ interface HomeRouteRouteChildren {
   HomeIndexRoute: typeof HomeIndexRoute
   HomeAboutIndexRoute: typeof HomeAboutIndexRoute
   HomeBookAppointmentIndexRoute: typeof HomeBookAppointmentIndexRoute
+  HomeConsultantIndexRoute: typeof HomeConsultantIndexRoute
   HomeEventsIndexRoute: typeof HomeEventsIndexRoute
   HomeFaqsIndexRoute: typeof HomeFaqsIndexRoute
   HomeInstitutionIndexRoute: typeof HomeInstitutionIndexRoute
@@ -322,6 +342,7 @@ const HomeRouteRouteChildren: HomeRouteRouteChildren = {
   HomeIndexRoute: HomeIndexRoute,
   HomeAboutIndexRoute: HomeAboutIndexRoute,
   HomeBookAppointmentIndexRoute: HomeBookAppointmentIndexRoute,
+  HomeConsultantIndexRoute: HomeConsultantIndexRoute,
   HomeEventsIndexRoute: HomeEventsIndexRoute,
   HomeFaqsIndexRoute: HomeFaqsIndexRoute,
   HomeInstitutionIndexRoute: HomeInstitutionIndexRoute,
