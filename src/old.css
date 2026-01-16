@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: #0a0a0a;
+  background: #fff;
+  font-family: "Syne", sans-serif !important;
+  font-size: 17px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden !important;
+}
+@layer components {
+  .Resizer {
+    @apply w-full px-[15px] mx-auto;
+  }
+
+  @media (min-width: 576px) {
+    .Resizer {
+      max-width: 540px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .Resizer {
+      max-width: 720px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .Resizer {
+      max-width: 960px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .Resizer {
+      max-width: 1140px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .Resizer {
+      max-width: 1320px;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    .Resizer {
+      max-width: 1440px;
+    }
+  }
+
+  .section {
+    padding: 80px 0px;
+  }
+
+  .only-bottom {
+    padding: 0px 0px 80px 0px;
+  }
+
+  .only-top {
+    padding: 80px 0px 0px 0px;
+  }
+
+  @media (max-width: 1000px) {
+    .section {
+      padding: 60px 0px;
+    }
+  }
+  .bg-gradient {
+    background: linear-gradient(92.49deg, #9e4bfa -14.1%, #ee79ac 111.07%);
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 16px; /* wider scrollbar track */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1; /* light gray track */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #ec4899; /* Tailwind pink-500 */
+  border-radius: 10px;
+  border: 4px solid #f1f1f1; /* extra padding around thumb for a “thicker” feel */
+}
+
+/* Firefox support */
+.custom-scrollbar {
+  scrollbar-width: auto;
+  scrollbar-color: #ec4899 #f1f1f1;
+}
