@@ -22,6 +22,7 @@ import { Route as HomeFaqsIndexRouteImport } from './routes/home/faqs/index'
 import { Route as HomeEventsIndexRouteImport } from './routes/home/events/index'
 import { Route as HomeBookAppointmentIndexRouteImport } from './routes/home/book-appointment/index'
 import { Route as HomeAboutIndexRouteImport } from './routes/home/about/index'
+import { Route as AuthAdminIndexRouteImport } from './routes/auth/admin/index'
 
 const HomeRouteRoute = HomeRouteRouteImport.update({
   id: '/home',
@@ -90,11 +91,17 @@ const HomeAboutIndexRoute = HomeAboutIndexRouteImport.update({
   path: '/about/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
+const AuthAdminIndexRoute = AuthAdminIndexRouteImport.update({
+  id: '/auth/admin/',
+  path: '/auth/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/home': typeof HomeRouteRouteWithChildren
   '/home/': typeof HomeIndexRoute
+  '/auth/admin': typeof AuthAdminIndexRoute
   '/home/about': typeof HomeAboutIndexRoute
   '/home/book-appointment': typeof HomeBookAppointmentIndexRoute
   '/home/events': typeof HomeEventsIndexRoute
@@ -109,6 +116,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home': typeof HomeIndexRoute
+  '/auth/admin': typeof AuthAdminIndexRoute
   '/home/about': typeof HomeAboutIndexRoute
   '/home/book-appointment': typeof HomeBookAppointmentIndexRoute
   '/home/events': typeof HomeEventsIndexRoute
@@ -125,6 +133,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/home': typeof HomeRouteRouteWithChildren
   '/home/': typeof HomeIndexRoute
+  '/auth/admin/': typeof AuthAdminIndexRoute
   '/home/about/': typeof HomeAboutIndexRoute
   '/home/book-appointment/': typeof HomeBookAppointmentIndexRoute
   '/home/events/': typeof HomeEventsIndexRoute
@@ -142,6 +151,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home'
     | '/home/'
+    | '/auth/admin'
     | '/home/about'
     | '/home/book-appointment'
     | '/home/events'
@@ -156,6 +166,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/home'
+    | '/auth/admin'
     | '/home/about'
     | '/home/book-appointment'
     | '/home/events'
@@ -171,6 +182,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home'
     | '/home/'
+    | '/auth/admin/'
     | '/home/about/'
     | '/home/book-appointment/'
     | '/home/events/'
@@ -186,6 +198,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRouteRoute: typeof HomeRouteRouteWithChildren
+  AuthAdminIndexRoute: typeof AuthAdminIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -281,6 +294,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeAboutIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/auth/admin/': {
+      id: '/auth/admin/'
+      path: '/auth/admin'
+      fullPath: '/auth/admin'
+      preLoaderRoute: typeof AuthAdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -319,6 +339,7 @@ const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRouteRoute: HomeRouteRouteWithChildren,
+  AuthAdminIndexRoute: AuthAdminIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
