@@ -1,4 +1,4 @@
-import BreadcrumbBanner from "./components/BreadcrumbBanner";
+import BreadcrumbBanner from "../-components/BreadcrumbBanner";
 
 const AboutUs = () => {
   return (
