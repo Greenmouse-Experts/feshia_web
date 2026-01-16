@@ -12,8 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteRouteImport } from './routes/home/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HomeIndexRouteImport } from './routes/home/index'
+import { Route as HomeWhyFeshiaIndexRouteImport } from './routes/home/why-feshia/index'
 import { Route as HomeWhatWeDoIndexRouteImport } from './routes/home/what-we-do/index'
+import { Route as HomeUniversitySearchIndexRouteImport } from './routes/home/university-search/index'
 import { Route as HomeStudentBlogIndexRouteImport } from './routes/home/student-blog/index'
+import { Route as HomePartnersIndexRouteImport } from './routes/home/partners/index'
+import { Route as HomeInstitutionIndexRouteImport } from './routes/home/institution/index'
+import { Route as HomeFaqsIndexRouteImport } from './routes/home/faqs/index'
+import { Route as HomeEventsIndexRouteImport } from './routes/home/events/index'
 import { Route as HomeBookAppointmentIndexRouteImport } from './routes/home/book-appointment/index'
 import { Route as HomeAboutIndexRouteImport } from './routes/home/about/index'
 
@@ -32,14 +38,45 @@ const HomeIndexRoute = HomeIndexRouteImport.update({
   path: '/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
+const HomeWhyFeshiaIndexRoute = HomeWhyFeshiaIndexRouteImport.update({
+  id: '/why-feshia/',
+  path: '/why-feshia/',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
 const HomeWhatWeDoIndexRoute = HomeWhatWeDoIndexRouteImport.update({
   id: '/what-we-do/',
   path: '/what-we-do/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
+const HomeUniversitySearchIndexRoute =
+  HomeUniversitySearchIndexRouteImport.update({
+    id: '/university-search/',
+    path: '/university-search/',
+    getParentRoute: () => HomeRouteRoute,
+  } as any)
 const HomeStudentBlogIndexRoute = HomeStudentBlogIndexRouteImport.update({
   id: '/student-blog/',
   path: '/student-blog/',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomePartnersIndexRoute = HomePartnersIndexRouteImport.update({
+  id: '/partners/',
+  path: '/partners/',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomeInstitutionIndexRoute = HomeInstitutionIndexRouteImport.update({
+  id: '/institution/',
+  path: '/institution/',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomeFaqsIndexRoute = HomeFaqsIndexRouteImport.update({
+  id: '/faqs/',
+  path: '/faqs/',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomeEventsIndexRoute = HomeEventsIndexRouteImport.update({
+  id: '/events/',
+  path: '/events/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
 const HomeBookAppointmentIndexRoute =
@@ -60,16 +97,28 @@ export interface FileRoutesByFullPath {
   '/home/': typeof HomeIndexRoute
   '/home/about': typeof HomeAboutIndexRoute
   '/home/book-appointment': typeof HomeBookAppointmentIndexRoute
+  '/home/events': typeof HomeEventsIndexRoute
+  '/home/faqs': typeof HomeFaqsIndexRoute
+  '/home/institution': typeof HomeInstitutionIndexRoute
+  '/home/partners': typeof HomePartnersIndexRoute
   '/home/student-blog': typeof HomeStudentBlogIndexRoute
+  '/home/university-search': typeof HomeUniversitySearchIndexRoute
   '/home/what-we-do': typeof HomeWhatWeDoIndexRoute
+  '/home/why-feshia': typeof HomeWhyFeshiaIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home': typeof HomeIndexRoute
   '/home/about': typeof HomeAboutIndexRoute
   '/home/book-appointment': typeof HomeBookAppointmentIndexRoute
+  '/home/events': typeof HomeEventsIndexRoute
+  '/home/faqs': typeof HomeFaqsIndexRoute
+  '/home/institution': typeof HomeInstitutionIndexRoute
+  '/home/partners': typeof HomePartnersIndexRoute
   '/home/student-blog': typeof HomeStudentBlogIndexRoute
+  '/home/university-search': typeof HomeUniversitySearchIndexRoute
   '/home/what-we-do': typeof HomeWhatWeDoIndexRoute
+  '/home/why-feshia': typeof HomeWhyFeshiaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -78,8 +127,14 @@ export interface FileRoutesById {
   '/home/': typeof HomeIndexRoute
   '/home/about/': typeof HomeAboutIndexRoute
   '/home/book-appointment/': typeof HomeBookAppointmentIndexRoute
+  '/home/events/': typeof HomeEventsIndexRoute
+  '/home/faqs/': typeof HomeFaqsIndexRoute
+  '/home/institution/': typeof HomeInstitutionIndexRoute
+  '/home/partners/': typeof HomePartnersIndexRoute
   '/home/student-blog/': typeof HomeStudentBlogIndexRoute
+  '/home/university-search/': typeof HomeUniversitySearchIndexRoute
   '/home/what-we-do/': typeof HomeWhatWeDoIndexRoute
+  '/home/why-feshia/': typeof HomeWhyFeshiaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -89,16 +144,28 @@ export interface FileRouteTypes {
     | '/home/'
     | '/home/about'
     | '/home/book-appointment'
+    | '/home/events'
+    | '/home/faqs'
+    | '/home/institution'
+    | '/home/partners'
     | '/home/student-blog'
+    | '/home/university-search'
     | '/home/what-we-do'
+    | '/home/why-feshia'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/home'
     | '/home/about'
     | '/home/book-appointment'
+    | '/home/events'
+    | '/home/faqs'
+    | '/home/institution'
+    | '/home/partners'
     | '/home/student-blog'
+    | '/home/university-search'
     | '/home/what-we-do'
+    | '/home/why-feshia'
   id:
     | '__root__'
     | '/'
@@ -106,8 +173,14 @@ export interface FileRouteTypes {
     | '/home/'
     | '/home/about/'
     | '/home/book-appointment/'
+    | '/home/events/'
+    | '/home/faqs/'
+    | '/home/institution/'
+    | '/home/partners/'
     | '/home/student-blog/'
+    | '/home/university-search/'
     | '/home/what-we-do/'
+    | '/home/why-feshia/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -138,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/home/why-feshia/': {
+      id: '/home/why-feshia/'
+      path: '/why-feshia'
+      fullPath: '/home/why-feshia'
+      preLoaderRoute: typeof HomeWhyFeshiaIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
     '/home/what-we-do/': {
       id: '/home/what-we-do/'
       path: '/what-we-do'
@@ -145,11 +225,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeWhatWeDoIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/home/university-search/': {
+      id: '/home/university-search/'
+      path: '/university-search'
+      fullPath: '/home/university-search'
+      preLoaderRoute: typeof HomeUniversitySearchIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
     '/home/student-blog/': {
       id: '/home/student-blog/'
       path: '/student-blog'
       fullPath: '/home/student-blog'
       preLoaderRoute: typeof HomeStudentBlogIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
+    '/home/partners/': {
+      id: '/home/partners/'
+      path: '/partners'
+      fullPath: '/home/partners'
+      preLoaderRoute: typeof HomePartnersIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
+    '/home/institution/': {
+      id: '/home/institution/'
+      path: '/institution'
+      fullPath: '/home/institution'
+      preLoaderRoute: typeof HomeInstitutionIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
+    '/home/faqs/': {
+      id: '/home/faqs/'
+      path: '/faqs'
+      fullPath: '/home/faqs'
+      preLoaderRoute: typeof HomeFaqsIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
+    '/home/events/': {
+      id: '/home/events/'
+      path: '/events'
+      fullPath: '/home/events'
+      preLoaderRoute: typeof HomeEventsIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
     '/home/book-appointment/': {
@@ -173,16 +288,28 @@ interface HomeRouteRouteChildren {
   HomeIndexRoute: typeof HomeIndexRoute
   HomeAboutIndexRoute: typeof HomeAboutIndexRoute
   HomeBookAppointmentIndexRoute: typeof HomeBookAppointmentIndexRoute
+  HomeEventsIndexRoute: typeof HomeEventsIndexRoute
+  HomeFaqsIndexRoute: typeof HomeFaqsIndexRoute
+  HomeInstitutionIndexRoute: typeof HomeInstitutionIndexRoute
+  HomePartnersIndexRoute: typeof HomePartnersIndexRoute
   HomeStudentBlogIndexRoute: typeof HomeStudentBlogIndexRoute
+  HomeUniversitySearchIndexRoute: typeof HomeUniversitySearchIndexRoute
   HomeWhatWeDoIndexRoute: typeof HomeWhatWeDoIndexRoute
+  HomeWhyFeshiaIndexRoute: typeof HomeWhyFeshiaIndexRoute
 }
 
 const HomeRouteRouteChildren: HomeRouteRouteChildren = {
   HomeIndexRoute: HomeIndexRoute,
   HomeAboutIndexRoute: HomeAboutIndexRoute,
   HomeBookAppointmentIndexRoute: HomeBookAppointmentIndexRoute,
+  HomeEventsIndexRoute: HomeEventsIndexRoute,
+  HomeFaqsIndexRoute: HomeFaqsIndexRoute,
+  HomeInstitutionIndexRoute: HomeInstitutionIndexRoute,
+  HomePartnersIndexRoute: HomePartnersIndexRoute,
   HomeStudentBlogIndexRoute: HomeStudentBlogIndexRoute,
+  HomeUniversitySearchIndexRoute: HomeUniversitySearchIndexRoute,
   HomeWhatWeDoIndexRoute: HomeWhatWeDoIndexRoute,
+  HomeWhyFeshiaIndexRoute: HomeWhyFeshiaIndexRoute,
 }
 
 const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(

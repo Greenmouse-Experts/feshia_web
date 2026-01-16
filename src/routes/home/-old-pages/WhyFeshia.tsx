@@ -1,11 +1,4 @@
-import React from "react";
 import BreadcrumbBanner from "../-components/BreadcrumbBanner";
-import {
-  FaMapMarkerAlt,
-  FaPhoneAlt,
-  FaEnvelope,
-  FaBuilding,
-} from "react-icons/fa";
 
 const WhyFeshia = () => {
   return (

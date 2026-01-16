@@ -195,19 +195,19 @@ const NavBar = () => {
               {dropdownOpen.institution && (
                 <div className="absolute left-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg z-10">
                   <Link
-                    to="/partners"
+                    to="/home/partners"
                     className="block px-4 py-2 text-sm hover:bg-gray-100"
                   >
                     Partner with Feshia
                   </Link>
                   <Link
-                    to="/institution"
+                    to="/home/institution"
                     className="block px-4 py-2 text-sm hover:bg-gray-100"
                   >
                     Institution Blog
                   </Link>
                   <Link
-                    to="/university-search"
+                    to="home/university-search"
                     className="block px-4 py-2 text-sm hover:bg-gray-100"
                   >
                     University Search
@@ -217,7 +217,7 @@ const NavBar = () => {
             </div>
 
             <Link
-              to="/events"
+              to="/home/events"
               className="text-sm font-medium hover:text-pink-500 transition"
             >
               Events
@@ -233,7 +233,7 @@ const NavBar = () => {
               {dropdownOpen.resources && (
                 <div className="absolute left-0 mt-2 w-28 bg-white text-black rounded-md shadow-lg z-10">
                   <Link
-                    to="/faqs"
+                    to="/home/faqs"
                     className="block px-4 py-2 text-sm hover:bg-gray-100"
                   >
                     FAQs
@@ -413,14 +413,14 @@ const NavBar = () => {
                       Partner with Feshia
                     </Link>
                     <Link
-                      to="/institution"
+                      to="/home/institution"
                       className="text-black py-1 hover:text-pink-600 transition"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       Institution Blog
                     </Link>
                     <Link
-                      to="/university-search"
+                      to="/home/university-search"
                       className="block px-4 py-2 text-sm hover:bg-gray-100"
                     >
                       University Search
@@ -430,7 +430,7 @@ const NavBar = () => {
               </div>
 
               <Link
-                to="/events"
+                to="/home/events"
                 className="text-black font-medium py-2 hover:text-pink-600 transition"
               >
                 Events
@@ -450,7 +450,7 @@ const NavBar = () => {
                 {mobileDropdownOpen.resources && (
                   <div className="ml-4 mt-2 flex flex-col gap-2">
                     <Link
-                      to="/faqs"
+                      to="/home/faqs"
                       className="text-black py-1 hover:text-pink-600 transition"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
