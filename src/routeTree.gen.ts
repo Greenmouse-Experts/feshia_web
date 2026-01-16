@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteRouteImport } from './routes/home/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HomeIndexRouteImport } from './routes/home/index'
+import { Route as HomeBookAppointmentIndexRouteImport } from './routes/home/book-appointment/index'
 
 const HomeRouteRoute = HomeRouteRouteImport.update({
   id: '/home',
@@ -28,28 +29,37 @@ const HomeIndexRoute = HomeIndexRouteImport.update({
   path: '/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
+const HomeBookAppointmentIndexRoute =
+  HomeBookAppointmentIndexRouteImport.update({
+    id: '/book-appointment/',
+    path: '/book-appointment/',
+    getParentRoute: () => HomeRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/home': typeof HomeRouteRouteWithChildren
   '/home/': typeof HomeIndexRoute
+  '/home/book-appointment': typeof HomeBookAppointmentIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home': typeof HomeIndexRoute
+  '/home/book-appointment': typeof HomeBookAppointmentIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/home': typeof HomeRouteRouteWithChildren
   '/home/': typeof HomeIndexRoute
+  '/home/book-appointment/': typeof HomeBookAppointmentIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/home' | '/home/'
+  fullPaths: '/' | '/home' | '/home/' | '/home/book-appointment'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/home'
-  id: '__root__' | '/' | '/home' | '/home/'
+  to: '/' | '/home' | '/home/book-appointment'
+  id: '__root__' | '/' | '/home' | '/home/' | '/home/book-appointment/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -80,15 +90,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/home/book-appointment/': {
+      id: '/home/book-appointment/'
+      path: '/book-appointment'
+      fullPath: '/home/book-appointment'
+      preLoaderRoute: typeof HomeBookAppointmentIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
   }
 }
 
 interface HomeRouteRouteChildren {
   HomeIndexRoute: typeof HomeIndexRoute
+  HomeBookAppointmentIndexRoute: typeof HomeBookAppointmentIndexRoute
 }
 
 const HomeRouteRouteChildren: HomeRouteRouteChildren = {
   HomeIndexRoute: HomeIndexRoute,
+  HomeBookAppointmentIndexRoute: HomeBookAppointmentIndexRoute,
 }
 
 const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
