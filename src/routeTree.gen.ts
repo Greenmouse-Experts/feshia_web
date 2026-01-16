@@ -10,10 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteRouteImport } from './routes/home/route'
-import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HomeIndexRouteImport } from './routes/home/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminDashboardRouteRouteImport } from './routes/admin/dashboard/route'
 import { Route as HomeWhyFeshiaIndexRouteImport } from './routes/home/why-feshia/index'
 import { Route as HomeWhatWeDoIndexRouteImport } from './routes/home/what-we-do/index'
 import { Route as HomeUniversitySearchIndexRouteImport } from './routes/home/university-search/index'
@@ -26,15 +26,20 @@ import { Route as HomeConsultantIndexRouteImport } from './routes/home/consultan
 import { Route as HomeBookAppointmentIndexRouteImport } from './routes/home/book-appointment/index'
 import { Route as HomeAboutIndexRouteImport } from './routes/home/about/index'
 import { Route as AuthAdminIndexRouteImport } from './routes/auth/admin/index'
+import { Route as AdminDashboardIndexRouteImport } from './routes/admin/dashboard/index'
+import { Route as AdminDashboardSettingsRouteImport } from './routes/admin/dashboard/settings'
+import { Route as AdminDashboardPartnersRouteImport } from './routes/admin/dashboard/partners'
+import { Route as AdminDashboardInvestorsRouteImport } from './routes/admin/dashboard/investors'
+import { Route as AdminDashboardAnnouncementsRouteImport } from './routes/admin/dashboard/announcements'
+import { Route as AdminDashboardProspectsIndexRouteImport } from './routes/admin/dashboard/prospects/index'
+import { Route as AdminDashboardInvestorsIndexRouteImport } from './routes/admin/dashboard/investors/index'
+import { Route as AdminDashboardTransactionsReceiptsRouteImport } from './routes/admin/dashboard/transactions/receipts'
+import { Route as AdminDashboardTransactionsPaymentsRouteImport } from './routes/admin/dashboard/transactions/payments'
+import { Route as AdminDashboardInvestorsInvestorIdRouteImport } from './routes/admin/dashboard/investors/$investorId'
 
 const HomeRouteRoute = HomeRouteRouteImport.update({
   id: '/home',
   path: '/home',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRouteRoute = AdminRouteRouteImport.update({
-  id: '/admin',
-  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -48,9 +53,14 @@ const HomeIndexRoute = HomeIndexRouteImport.update({
   getParentRoute: () => HomeRouteRoute,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AdminRouteRoute,
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRouteRoute = AdminDashboardRouteRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const HomeWhyFeshiaIndexRoute = HomeWhyFeshiaIndexRouteImport.update({
   id: '/why-feshia/',
@@ -114,13 +124,74 @@ const AuthAdminIndexRoute = AuthAdminIndexRouteImport.update({
   path: '/auth/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminDashboardIndexRoute = AdminDashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminDashboardRouteRoute,
+} as any)
+const AdminDashboardSettingsRoute = AdminDashboardSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminDashboardRouteRoute,
+} as any)
+const AdminDashboardPartnersRoute = AdminDashboardPartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => AdminDashboardRouteRoute,
+} as any)
+const AdminDashboardInvestorsRoute = AdminDashboardInvestorsRouteImport.update({
+  id: '/investors',
+  path: '/investors',
+  getParentRoute: () => AdminDashboardRouteRoute,
+} as any)
+const AdminDashboardAnnouncementsRoute =
+  AdminDashboardAnnouncementsRouteImport.update({
+    id: '/announcements',
+    path: '/announcements',
+    getParentRoute: () => AdminDashboardRouteRoute,
+  } as any)
+const AdminDashboardProspectsIndexRoute =
+  AdminDashboardProspectsIndexRouteImport.update({
+    id: '/prospects/',
+    path: '/prospects/',
+    getParentRoute: () => AdminDashboardRouteRoute,
+  } as any)
+const AdminDashboardInvestorsIndexRoute =
+  AdminDashboardInvestorsIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AdminDashboardInvestorsRoute,
+  } as any)
+const AdminDashboardTransactionsReceiptsRoute =
+  AdminDashboardTransactionsReceiptsRouteImport.update({
+    id: '/transactions/receipts',
+    path: '/transactions/receipts',
+    getParentRoute: () => AdminDashboardRouteRoute,
+  } as any)
+const AdminDashboardTransactionsPaymentsRoute =
+  AdminDashboardTransactionsPaymentsRouteImport.update({
+    id: '/transactions/payments',
+    path: '/transactions/payments',
+    getParentRoute: () => AdminDashboardRouteRoute,
+  } as any)
+const AdminDashboardInvestorsInvestorIdRoute =
+  AdminDashboardInvestorsInvestorIdRouteImport.update({
+    id: '/$investorId',
+    path: '/$investorId',
+    getParentRoute: () => AdminDashboardInvestorsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRouteRouteWithChildren
   '/home': typeof HomeRouteRouteWithChildren
-  '/admin/': typeof AdminIndexRoute
+  '/admin/dashboard': typeof AdminDashboardRouteRouteWithChildren
+  '/admin': typeof AdminIndexRoute
   '/home/': typeof HomeIndexRoute
+  '/admin/dashboard/announcements': typeof AdminDashboardAnnouncementsRoute
+  '/admin/dashboard/investors': typeof AdminDashboardInvestorsRouteWithChildren
+  '/admin/dashboard/partners': typeof AdminDashboardPartnersRoute
+  '/admin/dashboard/settings': typeof AdminDashboardSettingsRoute
+  '/admin/dashboard/': typeof AdminDashboardIndexRoute
   '/auth/admin': typeof AuthAdminIndexRoute
   '/home/about': typeof HomeAboutIndexRoute
   '/home/book-appointment': typeof HomeBookAppointmentIndexRoute
@@ -133,11 +204,20 @@ export interface FileRoutesByFullPath {
   '/home/university-search': typeof HomeUniversitySearchIndexRoute
   '/home/what-we-do': typeof HomeWhatWeDoIndexRoute
   '/home/why-feshia': typeof HomeWhyFeshiaIndexRoute
+  '/admin/dashboard/investors/$investorId': typeof AdminDashboardInvestorsInvestorIdRoute
+  '/admin/dashboard/transactions/payments': typeof AdminDashboardTransactionsPaymentsRoute
+  '/admin/dashboard/transactions/receipts': typeof AdminDashboardTransactionsReceiptsRoute
+  '/admin/dashboard/investors/': typeof AdminDashboardInvestorsIndexRoute
+  '/admin/dashboard/prospects': typeof AdminDashboardProspectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminIndexRoute
   '/home': typeof HomeIndexRoute
+  '/admin/dashboard/announcements': typeof AdminDashboardAnnouncementsRoute
+  '/admin/dashboard/partners': typeof AdminDashboardPartnersRoute
+  '/admin/dashboard/settings': typeof AdminDashboardSettingsRoute
+  '/admin/dashboard': typeof AdminDashboardIndexRoute
   '/auth/admin': typeof AuthAdminIndexRoute
   '/home/about': typeof HomeAboutIndexRoute
   '/home/book-appointment': typeof HomeBookAppointmentIndexRoute
@@ -150,14 +230,24 @@ export interface FileRoutesByTo {
   '/home/university-search': typeof HomeUniversitySearchIndexRoute
   '/home/what-we-do': typeof HomeWhatWeDoIndexRoute
   '/home/why-feshia': typeof HomeWhyFeshiaIndexRoute
+  '/admin/dashboard/investors/$investorId': typeof AdminDashboardInvestorsInvestorIdRoute
+  '/admin/dashboard/transactions/payments': typeof AdminDashboardTransactionsPaymentsRoute
+  '/admin/dashboard/transactions/receipts': typeof AdminDashboardTransactionsReceiptsRoute
+  '/admin/dashboard/investors': typeof AdminDashboardInvestorsIndexRoute
+  '/admin/dashboard/prospects': typeof AdminDashboardProspectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/admin': typeof AdminRouteRouteWithChildren
   '/home': typeof HomeRouteRouteWithChildren
+  '/admin/dashboard': typeof AdminDashboardRouteRouteWithChildren
   '/admin/': typeof AdminIndexRoute
   '/home/': typeof HomeIndexRoute
+  '/admin/dashboard/announcements': typeof AdminDashboardAnnouncementsRoute
+  '/admin/dashboard/investors': typeof AdminDashboardInvestorsRouteWithChildren
+  '/admin/dashboard/partners': typeof AdminDashboardPartnersRoute
+  '/admin/dashboard/settings': typeof AdminDashboardSettingsRoute
+  '/admin/dashboard/': typeof AdminDashboardIndexRoute
   '/auth/admin/': typeof AuthAdminIndexRoute
   '/home/about/': typeof HomeAboutIndexRoute
   '/home/book-appointment/': typeof HomeBookAppointmentIndexRoute
@@ -170,15 +260,25 @@ export interface FileRoutesById {
   '/home/university-search/': typeof HomeUniversitySearchIndexRoute
   '/home/what-we-do/': typeof HomeWhatWeDoIndexRoute
   '/home/why-feshia/': typeof HomeWhyFeshiaIndexRoute
+  '/admin/dashboard/investors/$investorId': typeof AdminDashboardInvestorsInvestorIdRoute
+  '/admin/dashboard/transactions/payments': typeof AdminDashboardTransactionsPaymentsRoute
+  '/admin/dashboard/transactions/receipts': typeof AdminDashboardTransactionsReceiptsRoute
+  '/admin/dashboard/investors/': typeof AdminDashboardInvestorsIndexRoute
+  '/admin/dashboard/prospects/': typeof AdminDashboardProspectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/admin'
     | '/home'
-    | '/admin/'
+    | '/admin/dashboard'
+    | '/admin'
     | '/home/'
+    | '/admin/dashboard/announcements'
+    | '/admin/dashboard/investors'
+    | '/admin/dashboard/partners'
+    | '/admin/dashboard/settings'
+    | '/admin/dashboard/'
     | '/auth/admin'
     | '/home/about'
     | '/home/book-appointment'
@@ -191,11 +291,20 @@ export interface FileRouteTypes {
     | '/home/university-search'
     | '/home/what-we-do'
     | '/home/why-feshia'
+    | '/admin/dashboard/investors/$investorId'
+    | '/admin/dashboard/transactions/payments'
+    | '/admin/dashboard/transactions/receipts'
+    | '/admin/dashboard/investors/'
+    | '/admin/dashboard/prospects'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/admin'
     | '/home'
+    | '/admin/dashboard/announcements'
+    | '/admin/dashboard/partners'
+    | '/admin/dashboard/settings'
+    | '/admin/dashboard'
     | '/auth/admin'
     | '/home/about'
     | '/home/book-appointment'
@@ -208,13 +317,23 @@ export interface FileRouteTypes {
     | '/home/university-search'
     | '/home/what-we-do'
     | '/home/why-feshia'
+    | '/admin/dashboard/investors/$investorId'
+    | '/admin/dashboard/transactions/payments'
+    | '/admin/dashboard/transactions/receipts'
+    | '/admin/dashboard/investors'
+    | '/admin/dashboard/prospects'
   id:
     | '__root__'
     | '/'
-    | '/admin'
     | '/home'
+    | '/admin/dashboard'
     | '/admin/'
     | '/home/'
+    | '/admin/dashboard/announcements'
+    | '/admin/dashboard/investors'
+    | '/admin/dashboard/partners'
+    | '/admin/dashboard/settings'
+    | '/admin/dashboard/'
     | '/auth/admin/'
     | '/home/about/'
     | '/home/book-appointment/'
@@ -227,12 +346,18 @@ export interface FileRouteTypes {
     | '/home/university-search/'
     | '/home/what-we-do/'
     | '/home/why-feshia/'
+    | '/admin/dashboard/investors/$investorId'
+    | '/admin/dashboard/transactions/payments'
+    | '/admin/dashboard/transactions/receipts'
+    | '/admin/dashboard/investors/'
+    | '/admin/dashboard/prospects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AdminRouteRoute: typeof AdminRouteRouteWithChildren
   HomeRouteRoute: typeof HomeRouteRouteWithChildren
+  AdminDashboardRouteRoute: typeof AdminDashboardRouteRouteWithChildren
+  AdminIndexRoute: typeof AdminIndexRoute
   AuthAdminIndexRoute: typeof AuthAdminIndexRoute
 }
 
@@ -243,13 +368,6 @@ declare module '@tanstack/react-router' {
       path: '/home'
       fullPath: '/home'
       preLoaderRoute: typeof HomeRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -268,10 +386,17 @@ declare module '@tanstack/react-router' {
     }
     '/admin/': {
       id: '/admin/'
-      path: '/'
-      fullPath: '/admin/'
+      path: '/admin'
+      fullPath: '/admin'
       preLoaderRoute: typeof AdminIndexRouteImport
-      parentRoute: typeof AdminRouteRoute
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/home/why-feshia/': {
       id: '/home/why-feshia/'
@@ -357,20 +482,78 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthAdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/dashboard/': {
+      id: '/admin/dashboard/'
+      path: '/'
+      fullPath: '/admin/dashboard/'
+      preLoaderRoute: typeof AdminDashboardIndexRouteImport
+      parentRoute: typeof AdminDashboardRouteRoute
+    }
+    '/admin/dashboard/settings': {
+      id: '/admin/dashboard/settings'
+      path: '/settings'
+      fullPath: '/admin/dashboard/settings'
+      preLoaderRoute: typeof AdminDashboardSettingsRouteImport
+      parentRoute: typeof AdminDashboardRouteRoute
+    }
+    '/admin/dashboard/partners': {
+      id: '/admin/dashboard/partners'
+      path: '/partners'
+      fullPath: '/admin/dashboard/partners'
+      preLoaderRoute: typeof AdminDashboardPartnersRouteImport
+      parentRoute: typeof AdminDashboardRouteRoute
+    }
+    '/admin/dashboard/investors': {
+      id: '/admin/dashboard/investors'
+      path: '/investors'
+      fullPath: '/admin/dashboard/investors'
+      preLoaderRoute: typeof AdminDashboardInvestorsRouteImport
+      parentRoute: typeof AdminDashboardRouteRoute
+    }
+    '/admin/dashboard/announcements': {
+      id: '/admin/dashboard/announcements'
+      path: '/announcements'
+      fullPath: '/admin/dashboard/announcements'
+      preLoaderRoute: typeof AdminDashboardAnnouncementsRouteImport
+      parentRoute: typeof AdminDashboardRouteRoute
+    }
+    '/admin/dashboard/prospects/': {
+      id: '/admin/dashboard/prospects/'
+      path: '/prospects'
+      fullPath: '/admin/dashboard/prospects'
+      preLoaderRoute: typeof AdminDashboardProspectsIndexRouteImport
+      parentRoute: typeof AdminDashboardRouteRoute
+    }
+    '/admin/dashboard/investors/': {
+      id: '/admin/dashboard/investors/'
+      path: '/'
+      fullPath: '/admin/dashboard/investors/'
+      preLoaderRoute: typeof AdminDashboardInvestorsIndexRouteImport
+      parentRoute: typeof AdminDashboardInvestorsRoute
+    }
+    '/admin/dashboard/transactions/receipts': {
+      id: '/admin/dashboard/transactions/receipts'
+      path: '/transactions/receipts'
+      fullPath: '/admin/dashboard/transactions/receipts'
+      preLoaderRoute: typeof AdminDashboardTransactionsReceiptsRouteImport
+      parentRoute: typeof AdminDashboardRouteRoute
+    }
+    '/admin/dashboard/transactions/payments': {
+      id: '/admin/dashboard/transactions/payments'
+      path: '/transactions/payments'
+      fullPath: '/admin/dashboard/transactions/payments'
+      preLoaderRoute: typeof AdminDashboardTransactionsPaymentsRouteImport
+      parentRoute: typeof AdminDashboardRouteRoute
+    }
+    '/admin/dashboard/investors/$investorId': {
+      id: '/admin/dashboard/investors/$investorId'
+      path: '/$investorId'
+      fullPath: '/admin/dashboard/investors/$investorId'
+      preLoaderRoute: typeof AdminDashboardInvestorsInvestorIdRouteImport
+      parentRoute: typeof AdminDashboardInvestorsRoute
+    }
   }
 }
-
-interface AdminRouteRouteChildren {
-  AdminIndexRoute: typeof AdminIndexRoute
-}
-
-const AdminRouteRouteChildren: AdminRouteRouteChildren = {
-  AdminIndexRoute: AdminIndexRoute,
-}
-
-const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
-  AdminRouteRouteChildren,
-)
 
 interface HomeRouteRouteChildren {
   HomeIndexRoute: typeof HomeIndexRoute
@@ -406,10 +589,55 @@ const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
   HomeRouteRouteChildren,
 )
 
+interface AdminDashboardInvestorsRouteChildren {
+  AdminDashboardInvestorsInvestorIdRoute: typeof AdminDashboardInvestorsInvestorIdRoute
+  AdminDashboardInvestorsIndexRoute: typeof AdminDashboardInvestorsIndexRoute
+}
+
+const AdminDashboardInvestorsRouteChildren: AdminDashboardInvestorsRouteChildren =
+  {
+    AdminDashboardInvestorsInvestorIdRoute:
+      AdminDashboardInvestorsInvestorIdRoute,
+    AdminDashboardInvestorsIndexRoute: AdminDashboardInvestorsIndexRoute,
+  }
+
+const AdminDashboardInvestorsRouteWithChildren =
+  AdminDashboardInvestorsRoute._addFileChildren(
+    AdminDashboardInvestorsRouteChildren,
+  )
+
+interface AdminDashboardRouteRouteChildren {
+  AdminDashboardAnnouncementsRoute: typeof AdminDashboardAnnouncementsRoute
+  AdminDashboardInvestorsRoute: typeof AdminDashboardInvestorsRouteWithChildren
+  AdminDashboardPartnersRoute: typeof AdminDashboardPartnersRoute
+  AdminDashboardSettingsRoute: typeof AdminDashboardSettingsRoute
+  AdminDashboardIndexRoute: typeof AdminDashboardIndexRoute
+  AdminDashboardTransactionsPaymentsRoute: typeof AdminDashboardTransactionsPaymentsRoute
+  AdminDashboardTransactionsReceiptsRoute: typeof AdminDashboardTransactionsReceiptsRoute
+  AdminDashboardProspectsIndexRoute: typeof AdminDashboardProspectsIndexRoute
+}
+
+const AdminDashboardRouteRouteChildren: AdminDashboardRouteRouteChildren = {
+  AdminDashboardAnnouncementsRoute: AdminDashboardAnnouncementsRoute,
+  AdminDashboardInvestorsRoute: AdminDashboardInvestorsRouteWithChildren,
+  AdminDashboardPartnersRoute: AdminDashboardPartnersRoute,
+  AdminDashboardSettingsRoute: AdminDashboardSettingsRoute,
+  AdminDashboardIndexRoute: AdminDashboardIndexRoute,
+  AdminDashboardTransactionsPaymentsRoute:
+    AdminDashboardTransactionsPaymentsRoute,
+  AdminDashboardTransactionsReceiptsRoute:
+    AdminDashboardTransactionsReceiptsRoute,
+  AdminDashboardProspectsIndexRoute: AdminDashboardProspectsIndexRoute,
+}
+
+const AdminDashboardRouteRouteWithChildren =
+  AdminDashboardRouteRoute._addFileChildren(AdminDashboardRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AdminRouteRoute: AdminRouteRouteWithChildren,
   HomeRouteRoute: HomeRouteRouteWithChildren,
+  AdminDashboardRouteRoute: AdminDashboardRouteRouteWithChildren,
+  AdminIndexRoute: AdminIndexRoute,
   AuthAdminIndexRoute: AuthAdminIndexRoute,
 }
 export const routeTree = rootRouteImport
