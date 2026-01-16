@@ -10,8 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteRouteImport } from './routes/home/route'
+import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HomeIndexRouteImport } from './routes/home/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as HomeWhyFeshiaIndexRouteImport } from './routes/home/why-feshia/index'
 import { Route as HomeWhatWeDoIndexRouteImport } from './routes/home/what-we-do/index'
 import { Route as HomeUniversitySearchIndexRouteImport } from './routes/home/university-search/index'
@@ -30,6 +32,11 @@ const HomeRouteRoute = HomeRouteRouteImport.update({
   path: '/home',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRouteRoute = AdminRouteRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -39,6 +46,11 @@ const HomeIndexRoute = HomeIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => HomeRouteRoute,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRouteRoute,
 } as any)
 const HomeWhyFeshiaIndexRoute = HomeWhyFeshiaIndexRouteImport.update({
   id: '/why-feshia/',
@@ -105,7 +117,9 @@ const AuthAdminIndexRoute = AuthAdminIndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteRouteWithChildren
   '/home': typeof HomeRouteRouteWithChildren
+  '/admin/': typeof AdminIndexRoute
   '/home/': typeof HomeIndexRoute
   '/auth/admin': typeof AuthAdminIndexRoute
   '/home/about': typeof HomeAboutIndexRoute
@@ -122,6 +136,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminIndexRoute
   '/home': typeof HomeIndexRoute
   '/auth/admin': typeof AuthAdminIndexRoute
   '/home/about': typeof HomeAboutIndexRoute
@@ -139,7 +154,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteRouteWithChildren
   '/home': typeof HomeRouteRouteWithChildren
+  '/admin/': typeof AdminIndexRoute
   '/home/': typeof HomeIndexRoute
   '/auth/admin/': typeof AuthAdminIndexRoute
   '/home/about/': typeof HomeAboutIndexRoute
@@ -158,7 +175,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/home'
+    | '/admin/'
     | '/home/'
     | '/auth/admin'
     | '/home/about'
@@ -175,6 +194,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
     | '/home'
     | '/auth/admin'
     | '/home/about'
@@ -191,7 +211,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/admin'
     | '/home'
+    | '/admin/'
     | '/home/'
     | '/auth/admin/'
     | '/home/about/'
@@ -209,6 +231,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRouteRoute: typeof AdminRouteRouteWithChildren
   HomeRouteRoute: typeof HomeRouteRouteWithChildren
   AuthAdminIndexRoute: typeof AuthAdminIndexRoute
 }
@@ -220,6 +243,13 @@ declare module '@tanstack/react-router' {
       path: '/home'
       fullPath: '/home'
       preLoaderRoute: typeof HomeRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -235,6 +265,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/home/'
       preLoaderRoute: typeof HomeIndexRouteImport
       parentRoute: typeof HomeRouteRoute
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
     }
     '/home/why-feshia/': {
       id: '/home/why-feshia/'
@@ -323,6 +360,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteRouteChildren {
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteRouteChildren: AdminRouteRouteChildren = {
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
+  AdminRouteRouteChildren,
+)
+
 interface HomeRouteRouteChildren {
   HomeIndexRoute: typeof HomeIndexRoute
   HomeAboutIndexRoute: typeof HomeAboutIndexRoute
@@ -359,6 +408,7 @@ const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRouteRoute: AdminRouteRouteWithChildren,
   HomeRouteRoute: HomeRouteRouteWithChildren,
   AuthAdminIndexRoute: AuthAdminIndexRoute,
 }
