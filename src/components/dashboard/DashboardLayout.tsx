@@ -174,11 +174,14 @@ export function DashboardLayout({
             </button>
             {expandedSections.transaction && (
               <div className="ml-3 mt-1 space-y-0.5">
-                <NavLink to="/dashboard/transactions/receipts" icon={Receipt}>
+                <NavLink
+                  to="/admin/dashboard/transactions/receipts"
+                  icon={Receipt}
+                >
                   Receipt
                 </NavLink>
                 <NavLink
-                  to="/dashboard/transactions/payments"
+                  to="/admin/dashboard/transactions/payments"
                   icon={CreditCard}
                 >
                   Payments
