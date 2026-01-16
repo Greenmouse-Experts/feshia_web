@@ -168,7 +168,7 @@ function PartnersPage() {
                 onClick={() => setViewMode("list")}
                 className={`p-1.5 md:p-2 transition-colors ${
                   viewMode === "list"
-                    ? "bg-[var(--color-orange)] text-white"
+                    ? "bg-primary text-white"
                     : "hover:bg-gray-100 text-gray-600"
                 }`}
               >
@@ -178,7 +178,7 @@ function PartnersPage() {
                 onClick={() => setViewMode("grid")}
                 className={`p-1.5 md:p-2 transition-colors border-l border-gray-300 ${
                   viewMode === "grid"
-                    ? "bg-[var(--color-orange)] text-white"
+                    ? "bg-primary text-white"
                     : "hover:bg-gray-100 text-gray-600"
                 }`}
               >
@@ -249,7 +249,7 @@ function PartnersPage() {
           {filteredPartners.map((partner) => (
             <div
               key={partner.id}
-              className="bg-white rounded-xl shadow-md border border-gray-200 p-6 hover:shadow-xl hover:border-[var(--color-orange)]/30 transition-all duration-300 relative group"
+              className="bg-white rounded-xl shadow-md border border-gray-200 p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300 relative group"
             >
               {/* Three Dots Menu */}
               <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -269,7 +269,7 @@ function PartnersPage() {
               {/* Profile Picture */}
               <div className="flex justify-center mb-4">
                 <div className="relative">
-                  <Avatar className="w-24 h-24 ring-4 ring-gray-100 group-hover:ring-[var(--color-orange)]/20 transition-all duration-300">
+                  <Avatar className="w-24 h-24 ring-4 ring-gray-100 group-hover:ring-primary/20 transition-all duration-300">
                     <AvatarImage
                       src={partner.avatar}
                       alt={partner.name}

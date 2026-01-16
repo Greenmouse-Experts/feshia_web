@@ -123,16 +123,12 @@ function AnnouncementsPage() {
                     <div className="flex-shrink-0">
                       <div
                         className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-sm transition-transform group-hover:scale-110 ${
-                          announcement.read
-                            ? "bg-[var(--color-orange)]/10"
-                            : "bg-[var(--color-orange)]"
+                          announcement.read ? "bg-primary/10" : "bg-primary"
                         }`}
                       >
                         <Bell
                           className={`w-5 h-5 md:w-6 md:h-6 ${
-                            announcement.read
-                              ? "text-[var(--color-orange)]"
-                              : "text-white"
+                            announcement.read ? "text-primary" : "text-white"
                           }`}
                         />
                       </div>
@@ -154,7 +150,7 @@ function AnnouncementsPage() {
                           {announcement.timestamp}
                         </span>
                         {!announcement.read && (
-                          <span className="text-xs px-2 py-0.5 bg-[var(--color-orange)]/10 text-[var(--color-orange)] rounded-full font-medium">
+                          <span className="text-xs px-2 py-0.5 bg-primary/10 text-primary rounded-full font-medium">
                             New
                           </span>
                         )}
@@ -166,7 +162,7 @@ function AnnouncementsPage() {
                       {announcement.read ? (
                         <div className="w-2.5 h-2.5 rounded-full bg-green-500 shadow-sm"></div>
                       ) : (
-                        <div className="w-2.5 h-2.5 rounded-full bg-[var(--color-orange)] animate-pulse shadow-sm"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-sm"></div>
                       )}
                     </div>
                   </div>
@@ -180,8 +176,8 @@ function AnnouncementsPage() {
         <div className="bg-white rounded-xl shadow-md border border-gray-200 p-4 md:p-6">
           <div className="mb-4 md:mb-6 pb-3 md:pb-4 border-b border-gray-200">
             <div className="flex items-center gap-2 md:gap-3 mb-2">
-              <div className="p-1.5 md:p-2 bg-[var(--color-orange)]/10 rounded-lg">
-                <Send className="w-4 h-4 md:w-5 md:h-5 text-[var(--color-orange)]" />
+              <div className="p-1.5 md:p-2 bg-primary/10 rounded-lg">
+                <Send className="w-4 h-4 md:w-5 md:h-5 text-primary" />
               </div>
               <h2 className="text-lg md:text-xl font-bold text-gray-900">
                 SEND NOTIFICATION

@@ -72,9 +72,7 @@ export function DashboardLayout({
         to={to}
         onClick={() => setSidebarOpen(false)}
         className={`flex items-center gap-2.5 p-2 rounded-lg transition-colors text-sm ${
-          active
-            ? "bg-[var(--color-orange)] text-white"
-            : "hover:bg-gray-800 text-gray-400"
+          active ? "bg-primary text-white" : "hover:bg-gray-800 text-gray-400"
         } ${className}`}
       >
         {Icon && <Icon className="w-4 h-4" />}
@@ -114,7 +112,7 @@ export function DashboardLayout({
               }}
             />
             <div className="hidden flex-col">
-              <div className="w-6 h-6 border-2 border-[var(--color-orange)] rounded-t-lg"></div>
+              <div className="w-6 h-6 border-2 border-primary rounded-t-lg"></div>
               <h1 className="text-sm font-bold">Feshia</h1>
               <p className="text-[10px] text-gray-400">Foreign Education</p>
             </div>
@@ -130,7 +128,7 @@ export function DashboardLayout({
         {/* Navigation */}
         <nav className="flex-1 overflow-y-auto p-3 space-y-1">
           {/* Dashboards */}
-          <NavLink to="/dashboard" icon={LayoutDashboard}>
+          <NavLink to="/admin/dashboard" icon={LayoutDashboard}>
             Dashboards
           </NavLink>
 

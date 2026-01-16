@@ -1,9 +1,12 @@
-import { InputHTMLAttributes, forwardRef } from 'react'
-import { cn } from '@/lib/utils'
+import { InputHTMLAttributes, forwardRef } from "react";
+import { cn } from "@/lib/utils";
 
-export interface SwitchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
-  checked?: boolean
-  onCheckedChange?: (checked: boolean) => void
+export interface SwitchProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "type"
+> {
+  checked?: boolean;
+  onCheckedChange?: (checked: boolean) => void;
 }
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
@@ -20,17 +23,16 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
         />
         <div
           className={cn(
-            "w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-[var(--color-orange)] rounded-full peer",
+            "w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary rounded-full peer",
             "peer-checked:after:translate-x-full peer-checked:after:border-white",
             "after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all",
-            "peer-checked:bg-[var(--color-orange)]",
-            className
+            "peer-checked:bg-primary",
+            className,
           )}
         />
       </label>
-    )
-  }
-)
+    );
+  },
+);
 
-Switch.displayName = 'Switch'
-
+Switch.displayName = "Switch";

@@ -30,7 +30,7 @@ function DashboardIndexPage() {
             <CardTitle className="text-sm font-medium text-gray-600">
               74 partners
             </CardTitle>
-            <Users className="w-5 h-5 text-[var(--color-orange)]" />
+            <Users className="w-5 h-5 text-primary" />
           </CardHeader>
         </Card>
         <Card>
@@ -38,7 +38,7 @@ function DashboardIndexPage() {
             <CardTitle className="text-sm font-medium text-gray-600">
               96 Partners
             </CardTitle>
-            <Handshake className="w-5 h-5 text-[var(--color-orange)]" />
+            <Handshake className="w-5 h-5 text-primary" />
           </CardHeader>
         </Card>
         <Card>
@@ -46,7 +46,7 @@ function DashboardIndexPage() {
             <CardTitle className="text-sm font-medium text-gray-600">
               67 Building
             </CardTitle>
-            <HomeIcon className="w-5 h-5 text-[var(--color-orange)]" />
+            <HomeIcon className="w-5 h-5 text-primary" />
           </CardHeader>
         </Card>
         <Card>
@@ -54,13 +54,13 @@ function DashboardIndexPage() {
             <CardTitle className="text-sm font-medium text-gray-600">
               24 Units
             </CardTitle>
-            <Home className="w-5 h-5 text-[var(--color-orange)]" />
+            <Home className="w-5 h-5 text-primary" />
           </CardHeader>
         </Card>
       </div>
 
       {/* Welcome Banner */}
-      <Card className="mb-4 md:mb-6 bg-gradient-to-r from-gray-800 to-[var(--color-orange)] text-white relative overflow-hidden">
+      <Card className="mb-4 md:mb-6 bg-gradient-to-r from-gray-800 to-primary text-white relative overflow-hidden">
         <CardContent className="p-4 md:p-6">
           <div className="flex items-center gap-2 mb-2">
             <Calendar className="w-4 h-4" />
@@ -111,7 +111,7 @@ function DashboardIndexPage() {
                 (height, i) => (
                   <div
                     key={i}
-                    className="flex-1 bg-gradient-to-t from-[var(--color-orange)] to-[var(--color-orange-light)] rounded-t"
+                    className="flex-1 bg-gradient-to-t from-primary to-primary/50 rounded-t"
                     style={{ height: `${height}%` }}
                   ></div>
                 ),
@@ -131,7 +131,7 @@ function DashboardIndexPage() {
         <Card>
           <CardHeader className="p-4 md:p-6">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-base md:text-lg">Wallet</CardTitle>
+              <CardTitle className="text-base md:text-lg ">Wallet</CardTitle>
               <select className="text-xs md:text-sm border border-gray-300 rounded px-2 py-1">
                 <option>Monthly</option>
               </select>
@@ -139,7 +139,7 @@ function DashboardIndexPage() {
           </CardHeader>
           <CardContent className="p-4 md:p-6 space-y-3 md:space-y-4">
             {/* Total Balance */}
-            <Card className="bg-accent text-white">
+            <Card className="bg-primary text-white">
               <CardContent className="p-3 md:p-4">
                 <div className="flex items-center justify-between">
                   <div>
