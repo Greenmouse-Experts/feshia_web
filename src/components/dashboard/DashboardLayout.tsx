@@ -189,12 +189,12 @@ export function DashboardLayout({
           </div>
 
           {/* Announcement */}
-          <NavLink to="/dashboard/announcements" icon={Megaphone}>
+          <NavLink to="/admin/dashboard/announcements" icon={Megaphone}>
             ANNOUNCEMENT
           </NavLink>
 
           {/* Setting */}
-          <NavLink to="/dashboard/settings" icon={Settings}>
+          <NavLink to="/admin/dashboard/settings" icon={Settings}>
             SETTING
           </NavLink>
         </nav>
