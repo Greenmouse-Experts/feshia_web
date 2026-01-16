@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteRouteImport } from './routes/home/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HomeIndexRouteImport } from './routes/home/index'
+import { Route as HomeStudentBlogIndexRouteImport } from './routes/home/student-blog/index'
 import { Route as HomeBookAppointmentIndexRouteImport } from './routes/home/book-appointment/index'
 
 const HomeRouteRoute = HomeRouteRouteImport.update({
@@ -29,6 +30,11 @@ const HomeIndexRoute = HomeIndexRouteImport.update({
   path: '/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
+const HomeStudentBlogIndexRoute = HomeStudentBlogIndexRouteImport.update({
+  id: '/student-blog/',
+  path: '/student-blog/',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
 const HomeBookAppointmentIndexRoute =
   HomeBookAppointmentIndexRouteImport.update({
     id: '/book-appointment/',
@@ -41,11 +47,13 @@ export interface FileRoutesByFullPath {
   '/home': typeof HomeRouteRouteWithChildren
   '/home/': typeof HomeIndexRoute
   '/home/book-appointment': typeof HomeBookAppointmentIndexRoute
+  '/home/student-blog': typeof HomeStudentBlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home': typeof HomeIndexRoute
   '/home/book-appointment': typeof HomeBookAppointmentIndexRoute
+  '/home/student-blog': typeof HomeStudentBlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,25 @@ export interface FileRoutesById {
   '/home': typeof HomeRouteRouteWithChildren
   '/home/': typeof HomeIndexRoute
   '/home/book-appointment/': typeof HomeBookAppointmentIndexRoute
+  '/home/student-blog/': typeof HomeStudentBlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/home' | '/home/' | '/home/book-appointment'
+  fullPaths:
+    | '/'
+    | '/home'
+    | '/home/'
+    | '/home/book-appointment'
+    | '/home/student-blog'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/home' | '/home/book-appointment'
-  id: '__root__' | '/' | '/home' | '/home/' | '/home/book-appointment/'
+  to: '/' | '/home' | '/home/book-appointment' | '/home/student-blog'
+  id:
+    | '__root__'
+    | '/'
+    | '/home'
+    | '/home/'
+    | '/home/book-appointment/'
+    | '/home/student-blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -90,6 +110,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/home/student-blog/': {
+      id: '/home/student-blog/'
+      path: '/student-blog'
+      fullPath: '/home/student-blog'
+      preLoaderRoute: typeof HomeStudentBlogIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
     '/home/book-appointment/': {
       id: '/home/book-appointment/'
       path: '/book-appointment'
@@ -103,11 +130,13 @@ declare module '@tanstack/react-router' {
 interface HomeRouteRouteChildren {
   HomeIndexRoute: typeof HomeIndexRoute
   HomeBookAppointmentIndexRoute: typeof HomeBookAppointmentIndexRoute
+  HomeStudentBlogIndexRoute: typeof HomeStudentBlogIndexRoute
 }
 
 const HomeRouteRouteChildren: HomeRouteRouteChildren = {
   HomeIndexRoute: HomeIndexRoute,
   HomeBookAppointmentIndexRoute: HomeBookAppointmentIndexRoute,
+  HomeStudentBlogIndexRoute: HomeStudentBlogIndexRoute,
 }
 
 const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
