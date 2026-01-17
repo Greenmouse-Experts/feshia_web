@@ -4,9 +4,9 @@ import AdminHeader from "./-components/AdminHeader";
 
 export const Route = createFileRoute("/admin/")({
   component: RouteComponent,
-  // loader: () => {
-  //   return redirect({ to: "/admin/dashboard" });
-  // },
+  loader: () => {
+    return redirect({ to: "/admin/dashboard" });
+  },
 });
 
 function RouteComponent() {
