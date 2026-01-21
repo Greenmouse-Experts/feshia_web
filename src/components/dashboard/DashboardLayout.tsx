@@ -112,7 +112,9 @@ export function DashboardLayout({
               }}
             />
             <div className="hidden flex-col">
-              <div className="w-6 h-6 border-2 border-primary rounded-t-lg"></div>
+              <div className="w-6 h-6">
+                <img src="https://res.cloudinary.com/greenmouse-tech/image/upload/v1750764748/feshia%20Images/Logo_1_1_gzqz7i.png"></img>
+              </div>
               <h1 className="text-sm font-bold">Feshia</h1>
               <p className="text-[10px] text-gray-400">Foreign Education</p>
             </div>
